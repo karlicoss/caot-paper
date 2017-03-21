@@ -94,80 +94,148 @@ discuss a relation with the factorization of the characteristic function in Sz-N
 %%% ----------------------------------------------------------------------
 %\tableofcontents
 \section{Document Preamble}
-Start the article with the command
 
-\begin{verbatim}\documentclass{birkjour}\end{verbatim}
+TODO some theory
 
-After that, needed macro packages and new commands can be inserted
-as in every \LaTeX\ or \AmS-\LaTeX\ document. Don't use commands
-that change the page layout (like
-\verb+\textwidth, \oddsidemargin+
-etc.) or fonts.\bigskip
+TODO references to previous papers (the one where completeness was proven)
 
-\section{Frontmatter}
-The command
-\begin{verbatim}\begin{document}\end{verbatim}
-starts -- as always -- the article.
+It is tempting to assume that any finite quantum graph, composed of edges of finite length will have similar properties.
+However, we will show that it is not necessarily the case. In this paper we investigate the following quantum graph $G$ (TODO GAMMA)
 
-\subsection{Author Data}
+We will use the following notations.
 
-Afterwards, insert title, author(s) and affiliation(s), as in the source file to this document,
-\verb+bjourdoc.tex+. E.g.,
-\begin{verbatim}
-\title[An Example for birkjour]
- {An Example for the Usage of the\\ birkjour Class File}
-%----------Author 1
-\author[Birkh\"auser]{Birkh\"{a}user Publishing Ltd.}
-\address{%
-Viaduktstr. 42\\
-P.O. Box 133\\
-CH 4010 Basel\\
-Switzerland}
-\email{info@birkhauser.ch}
-\end{verbatim}
-For each author the commands \verb+\author+, \verb+\address+ and \verb+\email+ should be used separately. See the last page of this document for the typesetting layout of the above addresses.
+\begin{itemize}
+\item $\mathbb{C}$: complex plane, $\mathbb{C} = \{ x + \mathrm{i}
+y \mid x, y \in \mathbb{R} \}$
+\item $\mathbb{H}$: upper complex half-plane, $\mathbb{H} =
+\{ x + \mathrm{i} y \mid y > 0, x, y \in \mathbb{R} \}$
+\item $\mathbb{D}$: unit disk, $\mathbb{D} = \{ z \mid
+\left|z\right| < 1 \}$
+\item $\mathbb{T}$: unit circle, $\mathbb{T} = \partial \mathbb{D}
+=  \{z \mid \left|z\right| = 1 \}$
+\item $z$ denotes a complex argument on complex plane $\mathbb{C}$
+\item $\zeta$ denotes a complex argument on unit disk $\mathbb{D}$
+\end{itemize}
 
-\subsection{Abstract, Thanks, Key Words, MSC}
+\subsection{Cayley transform}
 
-The \verb+abstract+ environment typesets the abstract:
-\begin{verbatim}
-\begin{abstract}
-The aim of this work is to provide the contributors to edited
-books with an easy-to-use and flexible class file compatible
-with \LaTeX\ and \AmS-\LaTeX.
-\end{abstract}
-\end{verbatim}
-In addition, the Mathematical Subject Codes, some key words and thanks can be given:
-\begin{verbatim}
-\thanks{This work was completed with the support of our
-\TeX-pert.}
-\subjclass{Primary 99Z99; Secondary 00A00}
-\keywords{Class file, journal}
-\end{verbatim}
-Finally, \verb+\maketitle+ typesets the title.
-
-\section{Mainmatter}
-Now type the article using the usual \LaTeX\ and (if you need them)
-\AmS-\LaTeX\ commands.
-
-We gratefully appreciate if the text does
-not contain \verb+\overfull+ and/or \verb+\underfull+ boxes, if
-equations do not exceed the indicated width, if hyphenations have
-been checked, and if the hierarchical structure of your article is
-clear. Please avoid caps and underlines.
-
-Just to give examples of a few typical environments:
-
-\begin{defn}
-This serves as environment for definitions. Note that the text
-appears not in italics.
-\end{defn}
-
-\begin{equation}\label{testequation}
-\text{This is a sample equation: } c^2=a^2+b^2
+Cayley transform maps $\mathbb{H}$ to $\mathbb{D}$:
+\[
+W(z) = \frac{z - \mathrm{i}}{z + \mathrm{i}},
+\]
+whereas inverse Cayley transform maps $\mathbb{D}$ to
+$\mathbb{H}$:
+\begin{equation}\label{eq:cayley_inverse}
+w(\zeta) = \mathrm{i} \frac{1 + \zeta}{1 - \zeta}.
 \end{equation}
 
-The above equation received the label \verb+testequation+.
+One notable property of the Cayley transform  is that it
+injectively maps $\mathbb{R}$ into unit circle $\mathbb{T}$.
+
+Another important property  we are going to use is that Cayley
+transform preserves circles. In particular, a circle of radius $r,
+0 < r < 1$, centered at zero, under inverse Cayley transform maps
+into a circle with center at point $\mathrm{i} C(r)$ and having
+the radius $R(r)$, where:
+
+\begin{equation}\label{eq:c_and_r}
+\begin{aligned}
+   C(r) &= \operatorname{Im} \frac{w(r) + w(-r)}{2} =
+   \frac{1 + r^2}{1 - r^2},
+\\ R(r) &= \operatorname{Im} \frac{w(r) - w(-r)}{2} =
+\frac{2 r}{1 - r^2}.
+\end{aligned}
+\end{equation}
+
+From these formulas,  it is easy to see that if $r$ approaches
+$1$, then $R(r)$ goes to infinity and $C(r)$ converges to $R(r)$.
+
+Also, we'll note two useful facts:
+\begin{subequations}
+\begin{equation}
+C(r) - R(r) = \frac{(1 - r)^2}{1 - r^2} > 0,
+\label{eq:cr_positive}
+\end{equation}
+\begin{equation}
+C(r) - R(r) = \frac{1 - r}{1 + r} < \frac{1}{R(r)} = \frac{1 -
+r^2}{2 r} \implies C - R \text{\ is\ }
+\mathcal{O}\left(\frac{1}{R}\right).
+\label{eq:cr_small}
+\end{equation}
+\end{subequations}
+
+
+\subsection{S-matrix}\label{sec:smatrix}
+Our quantum graph $\Gamma$ has two semi-infinite leads
+$\Omega_L,\Omega_R$. To construct the scattering matrix, we
+consider two scattering problems for plane waves coming from
+$\Omega_L$ and $\Omega_R$, correspondingly:
+\begin{equation}\label{eq:wlwl}
+\begin{aligned}
+   \psi_L(x) &= A e^{\mathrm{i} k x} + B e^{-\mathrm{i} k x}
+\\ \psi_R(x) &= C e^{\mathrm{i} k x} + D e^{-\mathrm{i} k x}
+\end{aligned}
+\end{equation}
+The scattering matrix relates the final and the initial states of
+the system:
+\begin{equation}\label{eq:smatrix}
+\begin{pmatrix} B \\ C \end{pmatrix} = S \begin{pmatrix} A \\
+D \end{pmatrix},
+\end{equation}
+and describes scattering properties of the obstacle. In our case
+the obstacle is the subgraph $\Omega$. Given $A,D$, one obtains
+$B,C$ by substitution of (\ref{eq:wlwl}) into the coupling
+conditions at the graph vertices (\ref{eq:bundle_system}). It
+gives us the S-matrix $S(k)$.
+
+\subsection{Completeness criterion}
+There is simple criterion for absence of the singular inner factor
+for the case  $\dim  N < \infty$ (for general operator case there
+is no simple criterion):
+
+\begin{thm}[\cite{Nik}, Lecture 4 ] Let $\dim  N < \infty$. The following
+statements are equivalent:
+
+1.  $S$ is a Blaschke-Potapov  product;
+
+2. \begin{equation}\label{eq:crit} \lim\limits_{r \to 1}
+\int\limits_{C_r} \ln \left|\det S(k)\right| \frac{2
+\mathrm{i}}{(k + i)^2} dk = 0,
+\end{equation}
+where $C_r$ is an image of $\left|\zeta\right| = r$ under the
+inverse Cayley transform (\ref{eq:cayley_inverse}).
+\end{thm}
+
+The integration curve can be parameterized as $C_r = \{R(r)
+e^{\mathrm{i} t} + \mathrm{i} C(r) \mid t \in [0, 2 \pi)\}$ (see
+\ref{eq:c_and_r}). For brevity, define:
+\[
+s(k) = \left|\det S(k)\right|,
+\]
+and after throwing away constants which are irrelevant for
+convergence, we get the final form of the criterion, which is
+convenient for us and will be used afterwards:
+\begin{equation}\label{eq:critp}
+\lim\limits_{r \to 1} \int\limits_{0}^{2 \pi} \ln s(R(r)
+e^{\mathrm{i} t} + \mathrm{i} C(r)) \frac{R}{(R(r) e^{\mathrm{i}
+t} + \mathrm{i} C(r) + i)^2} dt = 0.
+\end{equation}
+
+After solving (\ref{eq:bundle_system}) in conjunction with
+(\ref{eq:wlwl}), we get the S-matrix. The expression for $S(k)$ is
+rather large. We will not present it here because in the following
+consideration we need only its determinant which has essentially
+more simple form:
+\begin{equation}\label{det-s}
+\det S(k) = \frac{2 i \, W \cos\left(k\right) -
+{\left(W^{2} + 1\right)} \sin\left(k\right)}{2 i \,
+W \cos\left(k\right) + {\left(W^{2} + 1\right)} \sin\left(k\right)}
+\end{equation}
+
+
+
+
+\section{Mainmatter}
 
 \begin{thm}[Main Theorem]
 In contrast to definitions, theorems appear typeset in italics as
