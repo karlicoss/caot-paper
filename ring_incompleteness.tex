@@ -20,6 +20,20 @@
  \numberwithin{equation}{section}
 
 
+% \newcommand{\abs}{\lvert{#1}\rvert}
+
+\newcommand{\mcL}{\mathcal{L}}
+\newcommand{\mcH}{\mathcal{H}}
+\newcommand{\bbT}{\mathbb{T}}
+\newcommand{\bbC}{\mathbb{C}}
+\newcommand{\bbD}{\mathbb{D}}
+
+\newcommand{\eexp}[1]{e^{#1}}
+\newcommand{\iu}{{i\mkern1mu}}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+\renewcommand{\phi}{\varphi}
+
 \begin{document}
 
 %-------------------------------------------------------------------------
@@ -232,8 +246,85 @@ more simple form:
 W \cos\left(k\right) + {\left(W^{2} + 1\right)} \sin\left(k\right)}
 \end{equation}
 
+Since the system is symmetric around the origin, it is enough to consider scattering from the left or the right only. If the wave with the wavevector $k$ scattered from left to right, we get the wavefunctions in the following form:
+
+\begin{align*}
+\psi_L(x) &= \eexp{\iu k x} + R \eexp{-\iu k x} \\
+\psi_R(x) &= T \eexp{\iu k x}\\
+\psi_\Omega(x) &= P \sin(k x) + Q \cos(k x)
+\end{align*}
+, where $R$ and $T$ are reflection and transmission coefficient. Since the system is symmetric, scattering matrix takes the form
+$S(k) = \begin{pmatrix} R(k) & T(k) \\ T(k) & R(k) \end{pmatrix}$.
+
+At the vertex $V$ we put a Diract $\delta$-barrier of strength $a$, which implies a continuity condition for the wavefunction and a derivative jump:
+
+\begin{align*}
+\psi_L(0) = \psi_R(0) = \psi_\Omega(0) = \psi_\Omega(1) \\ 
+-\psi'_L(0) + \psi'_\Omega(0) - \psi'_\Omega(1) + \psi'_R(0) = a \psi_L(0)
+\end{align*}
 
 
+% \section{Вычисление S-матрицы}
+To compute transmission and reflection coefficients, we have to solve the following system of linear equations:
+\begin{align*}
+& 1 + R &= T \\
+& 1 + R &= Q \\
+& Q \cos k + P \sin k &= T \\
+& -P k \cos k + Q k \sin k + P k + \iu R k + \iu T k - \iu k &= T a
+\end{align*}
+, which yields:
+\begin{align*}
+R(k) = -\frac{2 \, k \cos\left(k\right) + a \sin\left(k\right) - 2 \, k}{2 \, k \cos\left(k\right) + {\left(a - 2 i \, k\right)} \sin\left(k\right) - 2 \, k} \\
+T(k) = -\frac{2 i \, k \sin\left(k\right)}{2 \, k \cos\left(k\right) + {\left(a - 2 i \, k\right)} \sin\left(k\right) - 2 \, k}
+\end{align*}
+, and after substituting these in the S-matrix, we get:
+\[
+\det S = 
+\frac
+{\cos\left(k\right) + {\left(\frac{a}{2 k} + i\right)} \sin\left(k\right) - 1}
+{\cos\left(k\right) + {\left(\frac{a}{2 k} - i\right)} \sin\left(k\right) - 1}
+\]
+
+
+% \section{Исследование полноты при $a=0$}
+Let's consider $a=0$:
+\[
+\det S
+= \frac
+{\cos\left(k\right) + \iu \sin\left(k\right) - 1}
+{\cos\left(k\right) - \iu \sin\left(k\right) - 1}
+= \frac{\eexp{\iu k} - 1}{\eexp{-\iu k} - 1}
+= -\eexp{i k}
+\]
+
+\[
+\ln \left|{\det S}\right| = \ln \eexp{- \Im k} = -\Im k
+\]
+
+We will compute this integral in the space of the unit disk, in order to do that, we apply the inverse Cayley transform $k \to \iu \frac{1 + \zeta}{1 - \zeta}$ to the integrand: $\Im k \to \Im \left( \iu \frac{1 + \zeta}{1 - \zeta} \right) $.
+
+\[
+  \lim\limits_{r = 1} \int\limits_{\left|\zeta\right| = r} \ln \left|\det S(\zeta)\right| d \zeta
+= \lim\limits_{r = 1} \int\limits_{\left|\zeta\right| = r} \Im \left( \iu \frac{1 + \zeta}{1 - \zeta} \right)  d\zeta = \dots
+\]
+, make a coordinate change into polar: $\zeta \to r \eexp{\iu \phi}, d\zeta \to r \iu \eexp{\iu \phi}$:
+\[
+\dots = \lim\limits_{r = 1} \int\limits_{\left|\zeta\right| = r} \Im \left( \iu \frac{1 + r \eexp{\iu \phi}}{1 - r \eexp{\iu \phi}} \right) r \iu \eexp{\iu \phi} d\phi
+\]
+
+Compex integral is by the definition a sum of the integrals of the real part and the imaginary part of the integrand. Let's evaluate the imaginary one:
+\begin{align*}
+\Im \left(  \Im \left( \iu \frac{1 + r \eexp{\iu \phi}}{1 - r \eexp{\iu \phi}} \right) r \iu \eexp{\iu \phi} \right)
+ &= r \Re \left(  \Re \left( \frac{1 + r \eexp{\iu \phi}}{1 - r \eexp{\iu \phi}} \right) \eexp{\iu \phi} \right) \\
+ &= r \Re \left( \frac{1 + r \eexp{\iu \phi}}{1 - r \eexp{\iu \phi}} \right) \Re \left(   \eexp{\iu \phi} \right) \\
+ &= r \Re \left( \frac{(1 + r \eexp{\iu \phi}) (1 - r \eexp{-\iu \phi}) }{(1 - r \eexp{\iu \phi}) (1 - r \eexp{-\iu \phi})} \right) \cos \phi \\
+ &= r \Re \left( \frac{1 - r^2 + 2 \iu r \sin \phi}{1 + r^2 - 2 r \cos \phi} \right) \cos \phi \\
+ &= r \frac{1 - r^2}{1 + r^2 - 2 r \cos \phi} \cos \phi \\
+ % TODOD ???? WTF IS GOING ON HERE???
+ &= 2 \pi r^2
+\end{align*}
+
+One can see that as $r \to 1$, the integral of the imaginary part goes to $2 \pi$, therefore, according to the completeness criterion, the system of resonant states of $\Gamma$ is not complete on the ring $\Omega$.
 
 \section{Mainmatter}
 
@@ -336,13 +427,6 @@ If you prefer to use your own macros within your document(s)
 please don't forget to send them to us together with the source
 files for the manuscript. We will need all these files to produce
 the final layout.
-
-
-\section{Backmatter}
-
-At the end of the document, the affiliation(s) will be typeset
-automatically. For this it is necessary that you used the \verb+\address+ command for including your affiliation, as explained above.
-
 
 % ------------------------------------------------------------------------
 
