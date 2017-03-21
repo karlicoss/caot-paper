@@ -111,7 +111,7 @@ discuss a relation with the factorization of the characteristic function in Sz-N
 
 TODO some theory
 
-TODO references to previous papers (the one where completeness was proven)
+TODO references to previous papers (the one where completeness was proven, was it published?).
 
 It is tempting to assume that any finite quantum graph, composed of edges of finite length will have similar properties.
 However, we will show that it is not necessarily the case. In this paper we investigate a quantum graph $\Gamma$ on Figure \ref{fig:graph}.
@@ -170,21 +170,6 @@ the radius $R(r)$, where:
 From these formulas,  it is easy to see that if $r$ approaches
 $1$, then $R(r)$ goes to infinity and $C(r)$ converges to $R(r)$.
 
-Also, we'll note two useful facts:
-\begin{subequations}
-\begin{equation}
-C(r) - R(r) = \frac{(1 - r)^2}{1 - r^2} > 0,
-\label{eq:cr_positive}
-\end{equation}
-\begin{equation}
-C(r) - R(r) = \frac{1 - r}{1 + r} < \frac{1}{R(r)} = \frac{1 -
-r^2}{2 r} \implies C - R \text{\ is\ }
-\mathcal{O}\left(\frac{1}{R}\right).
-\label{eq:cr_small}
-\end{equation}
-\end{subequations}
-
-
 \subsection{S-matrix}\label{sec:smatrix}
 Our quantum graph $\Gamma$ has two semi-infinite leads
 $\Omega_L,\Omega_R$. To construct the scattering matrix, we
@@ -218,50 +203,20 @@ statements are equivalent:
 
 1.  $S$ is a Blaschke-Potapov  product;
 
-2. \begin{equation}\label{eq:crit} \lim\limits_{r \to 1}
-\int\limits_{C_r} \ln \left|\det S(k)\right| \frac{2
-\mathrm{i}}{(k + i)^2} dk = 0,
+2. \begin{equation}\label{eq:crit}\lim\limits_{r \to 1} \int\limits_{\left|\zeta\right| = r} \ln \left|\det S(\zeta)\right| d \zeta = 0,
 \end{equation}
-where $C_r$ is an image of $\left|\zeta\right| = r$ under the
-inverse Cayley transform (\ref{eq:cayley_inverse}).
+where integration is performed in the complex unit disc space.
 \end{thm}
-
-The integration countour can be parameterized as $C_r = \{R(r)
-e^{\mathrm{i} t} + \mathrm{i} C(r) \mid t \in [0, 2 \pi)\}$ (see
-\ref{eq:c_and_r}). For brevity, define:
-\[
-s(k) = \left|\det S(k)\right|,
-\]
-and after throwing away constants which are irrelevant for
-convergence, we get the final form of the criterion, which is
-convenient for us and will be used afterwards:
-\begin{equation}\label{eq:critp}
-\lim\limits_{r \to 1} \int\limits_{0}^{2 \pi} \ln s(R(r)
-e^{\mathrm{i} t} + \mathrm{i} C(r)) \frac{R}{(R(r) e^{\mathrm{i}
-t} + \mathrm{i} C(r) + i)^2} dt = 0.
-\end{equation}
 
 \section{Proof of the main theorem}
 
-After solving (\ref{eq:bundle_system}) in conjunction with
-(\ref{eq:wlwl}), we get the S-matrix. The expression for $S(k)$ is
-rather large. We will not present it here because in the following
-consideration we need only its determinant which has essentially
-more simple form:
-\begin{equation}\label{det-s}
-\det S(k) = \frac{2 i \, W \cos\left(k\right) -
-{\left(W^{2} + 1\right)} \sin\left(k\right)}{2 i \,
-W \cos\left(k\right) + {\left(W^{2} + 1\right)} \sin\left(k\right)}
-\end{equation}
-
-Since the system is symmetric around the origin, it is enough to consider scattering from the left or the right only. If the wave with the wavevector $k$ scattered from left to right, we get the wavefunctions in the following form:
-
+Since the graph $\Gamma$ is symmetric around the origin, it is enough to consider scattering from the left or the right only. If the wave with the wavevector $k$ scattered from left to right, the wavefunctions take the following form:
 \begin{align*}
 \psi_L(x) &= \eexp{\iu k x} + R \eexp{-\iu k x} \\
 \psi_R(x) &= T \eexp{\iu k x}\\
 \psi_\Omega(x) &= P \sin(k x) + Q \cos(k x)
 \end{align*}
-, where $R$ and $T$ are reflection and transmission coefficient. Since the system is symmetric, scattering matrix takes the form
+, where $R$ and $T$ are reflection and transmission coefficient. Since the system is symmetric, scattering matrix takes a simpler form
 $S(k) = \begin{pmatrix} R(k) & T(k) \\ T(k) & R(k) \end{pmatrix}$.
 
 At the vertex $V$ we put a Dirac $\delta$-barrier of strength $a$, which implies a continuity condition for the wavefunction and a derivative jump:
@@ -315,12 +270,12 @@ We will compute this integral in the space of the unit disk, in order to do that
   \lim\limits_{r = 1} \int\limits_{\left|\zeta\right| = r} \ln \left|\det S(\zeta)\right| d \zeta
 = \lim\limits_{r = 1} \int\limits_{\left|\zeta\right| = r} \Im \left( \iu \frac{1 + \zeta}{1 - \zeta} \right)  d\zeta = \dots
 \]
-, make a coordinate change into polar: $\zeta \to r \eexp{\iu \phi}, d\zeta \to r \iu \eexp{\iu \phi}$:
+, transform coordinates into polar ones: $\zeta \to r \eexp{\iu \phi}, d\zeta \to r \iu \eexp{\iu \phi}$:
 \[
 \dots = \lim\limits_{r = 1} \int\limits_{\left|\zeta\right| = r} \Im \left( \iu \frac{1 + r \eexp{\iu \phi}}{1 - r \eexp{\iu \phi}} \right) r \iu \eexp{\iu \phi} d\phi
 \]
 
-Compex integral is by the definition a sum of the integrals of the real part and the imaginary part of the integrand. Let's evaluate the imaginary one:
+Compex integral is by its definition a sum of the integrals of the real part and the imaginary part of the integrand. Let's evaluate the imaginary one:
 \begin{align*}
 \Im \left(  \Im \left( \iu \frac{1 + r \eexp{\iu \phi}}{1 - r \eexp{\iu \phi}} \right) r \iu \eexp{\iu \phi} \right)
  &= r \Re \left(  \Re \left( \frac{1 + r \eexp{\iu \phi}}{1 - r \eexp{\iu \phi}} \right) \eexp{\iu \phi} \right) \\
