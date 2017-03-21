@@ -84,7 +84,7 @@ Saint Petersburg, Russia
 
 \begin{abstract}
 In this paper we investigate scattering problem for a quantum graph (a ring), connected
-with two semi-infinite leads via a Dirac delta functio at boundary. We prove
+with two semi-infinite leads via a Dirac delta function at boundary. We prove
 incompleteness of the system of resonance states in $L_2$ on finite subgraph and
 discuss a relation with the factorization of the characteristic function in Sz-Nagy functional model.
 \end{abstract}
@@ -261,7 +261,7 @@ We will compute this integral in the space of the unit disk, in order to do that
 \dots = \lim\limits_{r = 1} \int\limits_{\left|\zeta\right| = r} \Im \left( i \frac{1 + r e^{i \phi}}{1 - r e^{i \phi}} \right) r i e^{i \phi} d\phi
 \]
 
-Compex integral is by its definition a sum of the integrals of the real part and the imaginary part of the integrand. Let's evaluate the imaginary one:
+Complex integral is by its definition a sum of the integrals of the real part and the imaginary part of the integrand. Let's evaluate the imaginary one:
 \begin{align*}
 \Im \left(  \Im \left( i \frac{1 + r e^{i \phi}}{1 - r e^{i \phi}} \right) r i e^{i \phi} \right)
  &= r \Re \left(  \Re \left( \frac{1 + r e^{i \phi}}{1 - r e^{i \phi}} \right) e^{i \phi} \right) \\
@@ -269,16 +269,14 @@ Compex integral is by its definition a sum of the integrals of the real part and
  &= r \Re \left( \frac{(1 + r e^{i \phi}) (1 - r e^{-i \phi}) }{(1 - r e^{i \phi}) (1 - r e^{-i \phi})} \right) \cos \phi \\
  &= r \Re \left( \frac{1 - r^2 + 2 i r \sin \phi}{1 + r^2 - 2 r \cos \phi} \right) \cos \phi \\
  &= r \frac{1 - r^2}{1 + r^2 - 2 r \cos \phi} \cos \phi \\
- % TODOD ???? WTF IS GOING ON HERE???
- &= 2 \pi r^2
 \end{align*}
 
-One can see that as $r \to 1$, the integral of the imaginary part goes to $2 \pi$, therefore, according to the completeness criterion, the system of resonant states of $\Gamma$ is not complete on the ring $\Omega$.
+The integral above is well-known and after integrating the expression above (with respect to $\phi$ from $0$ to $2 \pi$), one gets $2 \pi r^2$. You can see that as $r \to 1$, the integral of the imaginary part goes to $2 \pi$, therefore, according to the completeness criterion, the system of resonant states of $\Gamma$ is not complete on the ring $\Omega$.
 
 % ------------------------------------------------------------------------
 
 \subsection*{Acknowledgment}
-TODO ?????
+TODO ????? Funding?
 
 
 \begin{thebibliography}{1}
@@ -286,11 +284,6 @@ TODO ?????
 N.Nikol'skii. {\textit Treatise on the shift operator: spectral
 function theory}. Springer Science \& Business Media; Berlin,
 (2012).
-
-\bibitem{test} A. B. C. Test, \textit{On a Test.} J. of Testing
-\textbf{88} (2000), 100--120.
-\bibitem{latex} G. Gr\"atzer, \textit{Math into \LaTeX.} 3rd Edition,
-Birkh\"auser, 2000.
 \end{thebibliography}
 
 % ------------------------------------------------------------------------

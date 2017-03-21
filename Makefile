@@ -35,13 +35,8 @@ wipe:
 export: build
 	zip $(OUTPUT_NAME).zip $(NAME) \
 	    build/$(OUTPUT_NAME).pdf \
-	    amsbsy.sty  amsfonts.sty \
-	    amsmath.sty  amssymb.sty  \
-	    epsfig.sty  graphicx.sty  \
-	    natbib.sty  rotating.sty  \
-	    subfigure.sty \
-            gCOV.bst gCOV2e.cls \
-            resonator_bundle.eps
+	    figure.eps \
+            birkjour.cls
 
 
 ASPELL_ARGS := --mode=tex --home-dir=aspell
