@@ -107,17 +107,23 @@ discuss a relation with the factorization of the characteristic function in Sz-N
 \maketitle
 %%% ----------------------------------------------------------------------
 %\tableofcontents
-\section{Document Preamble}
+\section{Introduction}
 
 TODO some theory
 
 TODO references to previous papers (the one where completeness was proven)
 
 It is tempting to assume that any finite quantum graph, composed of edges of finite length will have similar properties.
-However, we will show that it is not necessarily the case. In this paper we investigate the following quantum graph $G$ (TODO GAMMA)
+However, we will show that it is not necessarily the case. In this paper we investigate a quantum graph $\Gamma$ on Figure \ref{fig:graph}.
 
-We will use the following notations.
+\begin{figure}
+\includegraphics[width=\textwidth,keepaspectratio]{figure.eps}
+\caption{Quantum graph $\Gamma$ composed of semi-infinite edges $\Omega_L, \Omega_R$ and a resonator $\Omega$, consisting of a ring with circumference $1$.}
+\label{fig:graph}
+\end{figure}
 
+\subsection{Notations}
+We will use the following notations:
 \begin{itemize}
 \item $\mathbb{C}$: complex plane, $\mathbb{C} = \{ x + \mathrm{i}
 y \mid x, y \in \mathbb{R} \}$
@@ -199,7 +205,7 @@ D \end{pmatrix},
 and describes scattering properties of the obstacle. In our case
 the obstacle is the subgraph $\Omega$. Given $A,D$, one obtains
 $B,C$ by substitution of (\ref{eq:wlwl}) into the coupling
-conditions at the graph vertices (\ref{eq:bundle_system}). It
+conditions at the graph vertices. It
 gives us the S-matrix $S(k)$.
 
 \subsection{Completeness criterion}
@@ -220,7 +226,7 @@ where $C_r$ is an image of $\left|\zeta\right| = r$ under the
 inverse Cayley transform (\ref{eq:cayley_inverse}).
 \end{thm}
 
-The integration curve can be parameterized as $C_r = \{R(r)
+The integration countour can be parameterized as $C_r = \{R(r)
 e^{\mathrm{i} t} + \mathrm{i} C(r) \mid t \in [0, 2 \pi)\}$ (see
 \ref{eq:c_and_r}). For brevity, define:
 \[
@@ -234,6 +240,8 @@ convenient for us and will be used afterwards:
 e^{\mathrm{i} t} + \mathrm{i} C(r)) \frac{R}{(R(r) e^{\mathrm{i}
 t} + \mathrm{i} C(r) + i)^2} dt = 0.
 \end{equation}
+
+\section{Proof of the main theorem}
 
 After solving (\ref{eq:bundle_system}) in conjunction with
 (\ref{eq:wlwl}), we get the S-matrix. The expression for $S(k)$ is
@@ -256,7 +264,7 @@ Since the system is symmetric around the origin, it is enough to consider scatte
 , where $R$ and $T$ are reflection and transmission coefficient. Since the system is symmetric, scattering matrix takes the form
 $S(k) = \begin{pmatrix} R(k) & T(k) \\ T(k) & R(k) \end{pmatrix}$.
 
-At the vertex $V$ we put a Diract $\delta$-barrier of strength $a$, which implies a continuity condition for the wavefunction and a derivative jump:
+At the vertex $V$ we put a Dirac $\delta$-barrier of strength $a$, which implies a continuity condition for the wavefunction and a derivative jump:
 
 \begin{align*}
 \psi_L(0) = \psi_R(0) = \psi_\Omega(0) = \psi_\Omega(1) \\ 
@@ -326,108 +334,6 @@ Compex integral is by the definition a sum of the integrals of the real part and
 
 One can see that as $r \to 1$, the integral of the imaginary part goes to $2 \pi$, therefore, according to the completeness criterion, the system of resonant states of $\Gamma$ is not complete on the ring $\Omega$.
 
-\section{Mainmatter}
-
-\begin{thm}[Main Theorem]
-In contrast to definitions, theorems appear typeset in italics as
-it has become more or less standard in most textbooks and
-monographs. Equations can be cited using the \verb+\eqref+ command which
-automatically adds brackets: \verb+\eqref{testequation}+ results in \eqref{testequation}.
-\end{thm}
-
-\begin{proof}
-A special environment is predefined: the \textit{proof} environment. Please use
-\begin{verbatim}\begin{proof}\end{verbatim}
-proof of the statement
-\begin{verbatim}\end{proof}\end{verbatim}
-for typesetting your proofs. The end-of-proof symbol $\Box$ will be added automatically.
-\end{proof}
-
-There are two known problems with the placement of the end-of-proof sign:
-
-\begin{enumerate}
-  \item if your proof ends with a\ \ s i n g l e\ \ displayed line, the end-of-proof sign would
-be placed in the line below; if you want to avoid this, write your line in the form
-\begin{verbatim}$$displayed math line \eqno\qedhere$$\end{verbatim}
-which results in
-
-\begin{proof}
-$$displayed math line \eqno\qedhere$$
-\end{proof}
-\item if your proof ends with an aligned displayed environment, the command
-\verb+\tag*{\qed}+ can be used to place the end-of-proof sign properly:
-\begin{verbatim}
-\begin{align*}
-\alpha&=\beta+\gamma\\
-&=\delta+\epsilon\tag*{\qed}
-\end{align*}
-\end{verbatim}
-results in
-\begin{align*}
-\alpha&=\beta+\gamma\\
-&=\delta+\epsilon\tag*{\qed}
-\end{align*}
-\end{enumerate}
-Please try to avoid using the obsolete \verb+\eqnarray+ environment. This environment has several bugs
-and has been replaced by the more flexible \AmS\ environments \verb+align, split, multline+.
-
-
-\begin{rem}
-Additional comments are being typeset without boldfaced entrance
-word as they may be minor important.
-\end{rem}
-
-\begin{ex}
-For some constructs, even no number is required.
-\end{ex}
-
-Displayed equations may be numbered like the following one:
-\begin{equation}
-\sqrt{1-\sin^2(x)}=|\cos(x)|.
-\end{equation}
-
-\subsection{Here is a Sample Subsection}
-
-Just needed because next thing is
-
-\subsubsection{Here is a Sample for a Subsubsection}
-
-One more sample will follow which clearly shows the difference between subsubsection deeper nested lists:
-
-\paragraph{Here is a Sample for a Paragraph}
-
-As you observe, paragraphs do not have numbers and start new lines after the heading, by default.
-
-\subsection{Indentation}
-Though indentation to indicate a new paragraph is welcome, please
-do not use indentation when the new paragraph is already marked by
-an extra vertical space, as for example in the case of the first
-paragraph following a heading (this is standard in this class), or
-after using commands like
-\verb+\smallskip, \medskip, \bigskip+ etc.
-
-
-\subsection{Figures}
-
-Please use whenever possible figures in EPS format (encapsulated
-postscript). Then, you can include the figure with
-the command
-
-\begin{verbatim}\includegraphics{figure.eps}\end{verbatim}
-
-It is sometimes difficult to place insertions at an exact location
-in the final form of the article. Therefore, all figures and tables
-should be numbered and you should refer to these numbers within
-the text. Please avoid formulations like ``the following
-figure\dots".
-
-\subsection{Your Own Macros}
-
-If you prefer to use your own macros within your document(s)
-please don't forget to send them to us together with the source
-files for the manuscript. We will need all these files to produce
-the final layout.
-
 % ------------------------------------------------------------------------
 
 \subsection*{Acknowledgment}
@@ -435,6 +341,11 @@ TODO ?????
 
 
 \begin{thebibliography}{1}
+\bibitem{Nik}
+N.Nikol'skii. {\textit Treatise on the shift operator: spectral
+function theory}. Springer Science \& Business Media; Berlin,
+(2012).
+
 \bibitem{test} A. B. C. Test, \textit{On a Test.} J. of Testing
 \textbf{88} (2000), 100--120.
 \bibitem{latex} G. Gr\"atzer, \textit{Math into \LaTeX.} 3rd Edition,
